@@ -20,12 +20,12 @@ const SubmissionSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Description is required'],
         minlength: [10, 'Description must be at least 10 characters long'],
-        maxlength: [255, 'Description cannot be more than 255 characters long']
+        maxlength: [255, 'Description cannot be more than 255 characters']
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     }
-}, { timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } });
+}, { timestamps: true });
 
 module.exports = mongoose.model('Submission', SubmissionSchema);

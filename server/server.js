@@ -1,43 +1,47 @@
 const express = require('express');
+const cors = require('cors');
 const session = require('express-session');
-const cookieParser = require('cookie-parser');
-const cors = require('cors'); // If you're developing with a separate server and client, you may need CORS
 const app = express();
 const port = 8000;
 
 // Import the mongoose configuration file to establish a connection to the database
-require('./config/mongoose');
+require('./config/mongoose.config');
 
-// Middlewares
-app.use(cors()); // Enable CORS if your client is on a different domain during development
+// Middleware for JSON request body parsing
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser('secret'));
 
-// Session middleware for handling user sessions
+// Session configuration
 app.use(session({
-    secret: 'secret',
+    secret: 'supersecret', 
     resave: false,
-    saveUninitialized: true,
-    cookie: { httpOnly: true }
+    saveUninitialized: false, 
+    cookie: { 
+        maxAge: 3600000, // 1 hour
+        httpOnly: true 
+    }
 }));
 
-// API routes
-const authRoutes = require('./routes/auth');
-const submissionRoutes = require('./routes/submissions');
-const userRoutes = require('./routes/users');
+// Define CORS configuration
+app.use(
+    cors({
+        origin: 'http://localhost:5173', 
+        credentials: true, 
+        exposedHeaders: ['set-cookie'],
+    })
+);
 
-// Use the API routes
-app.use('/api/auth', authRoutes);
-app.use('/api/submissions', submissionRoutes);
-app.use('/api/users', userRoutes);
+// Routes
+const authRoutes = require('./routes/auth.routes');
+const submissionRoutes = require('./routes/submissions.routes');
+const userRoutes = require('./routes/users.routes');
 
-// Error handling middleware - This will catch any errors that occur in the process of handling a request.
+app.use('/auth', authRoutes);
+app.use('/submissions', submissionRoutes);
+app.use('/users', userRoutes);
+
 app.use((err, req, res, next) => {
     console.error(err.stack);
-    res.status(500).send('Something broke!');
+    res.status(500).json({ error: 'Internal Server Error' });
 });
 
-// Start the server
-app.listen(port, () => console.log(`Server running on port: ${port}`));
-
+app.listen(port, () => console.log(`Listening on port: ${port}`));

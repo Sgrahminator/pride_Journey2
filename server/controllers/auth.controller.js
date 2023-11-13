@@ -1,4 +1,4 @@
-const User = require('../models/User');
+const User = require('../models/user.model');
 const bcrypt = require('bcrypt');
 
 const authController = {
@@ -53,11 +53,10 @@ const authController = {
             if (err) {
                 return res.status(400).json({ error: "Unable to log out." });
             }
-            res.clearCookie('connect.sid'); // If you're using 'connect.sid' for your session ID
+            res.clearCookie('connect.sid'); 
             res.json({ message: "User logged out successfully!" });
         });
     }
 };
 
 module.exports = authController;
-

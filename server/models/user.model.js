@@ -26,17 +26,22 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Email is required'],
         minlength: [9, 'Email must be at least 9 characters long'],
-        unique: true,
-        match: [/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/, 'Please fill a valid email address']
+        validate: {
+            validator: function(v) {
+                return /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(.\w{2,3})+$/.test(v);
+            },
+            message: props => `${props.value} is not a valid email address!`
+        },
+        unique: true
     },
     password: {
         type: String,
         required: [true, 'Password is required'],
         minlength: [8, 'Password must be at least 8 characters long']
-    }
+    },
 }, { timestamps: true });
 
-// Hash password before saving
+// Password hashing middleware
 UserSchema.pre('save', function(next) {
     if (!this.isModified('password')) return next();
 
@@ -48,3 +53,4 @@ UserSchema.pre('save', function(next) {
 });
 
 module.exports = mongoose.model('User', UserSchema);
+

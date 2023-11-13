@@ -1,5 +1,5 @@
-const Submission = require('../models/Submission');
-const User = require('../models/User');
+const Submission = require('../models/submission.model');
+const User = require('../models/user.model');
 
 const submissionController = {
     // Create a new submission
@@ -23,7 +23,7 @@ const submissionController = {
     // Get all submissions
     getAll: async (req, res) => {
         try {
-            const submissions = await Submission.find().populate('user', 'firstName');
+            const submissions = await Submission.find().populate('user', '_id firstName');
             res.json(submissions);
         } catch (err) {
             res.status(500).json({ error: err.message });
@@ -33,7 +33,7 @@ const submissionController = {
     // Get a single submission by ID
     getOne: async (req, res) => {
         try {
-            const submission = await Submission.findById(req.params.id).populate('user', 'firstName');
+            const submission = await Submission.findById(req.params.id).populate('user', '_id firstName');
             if (!submission) {
                 return res.status(404).json({ error: "Submission not found." });
             }
@@ -72,22 +72,33 @@ const submissionController = {
     // Delete a submission
     delete: async (req, res) => {
         try {
-            const submission = await Submission.findById(req.params.id);
+            const submissionId = req.params.id;
+            const userId = req.session.user?.id;
 
+            console.log(`Attempting to delete submission with ID: ${submissionId} by user: ${userId}`);
+
+            // Check if the submission belongs to the user
+            const submission = await Submission.findById(submissionId);
             if (!submission) {
+                console.error(`Submission not found with ID: ${submissionId}`);
                 return res.status(404).json({ error: "Submission not found." });
             }
-
-            if (submission.user.toString() !== req.session.user?.id) {
+            if (submission.user.toString() !== userId) {
+                console.error(`Unauthorized deletion attempt by user: ${userId} on submission: ${submissionId}`);
                 return res.status(401).json({ error: "Unauthorized operation." });
             }
 
-            await submission.remove();
+            // Delete the submission
+            await Submission.findByIdAndDelete(submissionId);
+
+            console.log(`Submission with ID: ${submissionId} deleted successfully`);
             res.json({ message: "Submission deleted successfully!" });
         } catch (err) {
+            console.error(`Error deleting submission: ${err}`);
             res.status(500).json({ error: err.message });
         }
     }
+
 };
 
 module.exports = submissionController;

@@ -1,5 +1,5 @@
-const User = require('../models/User');
-const Submission = require('../models/Submission');
+const User = require('../models/user.model');
+const Submission = require('../models/submission.model');
 
 const userController = {
     // Get user profile
