@@ -1,0 +1,172 @@
+/* Overall Layout */
+.container {
+    padding: 40px;
+    margin-top: 20px;
+    background-color: #f29cfa; /* Keeping your background color */
+    border-radius: 15px;
+    box-shadow: 0 5px 15px 0 rgba(0,0,0,0.3);
+    color: #ffffff; /* Change text color for better readability */
+}
+
+/* NavBar Styles */
+.navbar {
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+}
+
+.navbar a {
+    color: rgb(16, 16, 16);
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: color 0.3s;
+}
+
+.navbar a:hover {
+    color: #4e99e4;
+}
+
+/* Submission Form Styles */
+.submission-form {
+    margin-bottom: 30px;
+}
+
+.submission-form input, form input, form select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Form Styling */
+form {
+    background-color: rgba(255, 255, 255, 0.1); /* Slight background for forms */
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #ffffff; /* White color for labels */
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+/* Button Styling within any form */
+form button {
+    width: 25%;
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #45a049; /* Slightly darker green on hover */
+}
+
+/* Responsive Adjustments */
+@media only screen and (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    .row div[class^="col-"] {
+        margin-bottom: 20px;
+    }
+}
+
+/* Submission List Styles - Updated for Card Layout */
+.submission-list-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.submission-card {
+    background-color: #ffffff; /* Card background color */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    color: #333; /* Text color */
+    width: calc(33% - 20px); /* Three cards per row, adjust as needed */
+}
+
+.submission-card h3 {
+    margin-top: 0;
+}
+
+.submission-card p {
+    margin: 5px 0;
+}
+
+/* Pastel color classes */
+.pastel-red {
+    background-color: #fa7777; 
+}
+
+.pastel-orange {
+    background-color: #f89d2d;
+}
+
+.pastel-yellow {
+    background-color: #ecfc17;
+}
+
+.pastel-green {
+    background-color: #6cf950;
+}
+
+.pastel-blue {
+    background-color: #30deed;
+}
+
+.pastel-indigo {
+    background-color: #5693f5;
+}
+
+.pastel-violet {
+    background-color: #8570fc;
+}
+
+.details-card {
+    background-color: #f29cfa; /* Card background color */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    color: #ffffff;
+}
+
+.details-button {
+    width: 25%;
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.details-button {
+    background-color: #45a049; /* Slightly darker green on hover */
+}
+
+

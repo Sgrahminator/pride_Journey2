@@ -16,19 +16,21 @@ const RegLoginPage = () => {
     };
 
     return (
-        <div>
-        <h1>Welcome to Pride Journey</h1>
-
-        <div>
-            <h2>Register</h2>
-            <RegistrationForm onRegistrationSuccess={handleRegistrationSuccess} />
-            {registrationSuccess && <p>Registered successfully. Please log in.</p>}
-        </div>
-
-        <div>
-            <h2>Login</h2>
-            <LoginForm onLoginSuccess={handleLoginSuccess} />
-        </div>
+        <div className="container">
+            <h1 className="text-center my-4">Welcome to Pride Journey</h1>
+        
+            <div className="row">
+                <div className="col-md-6">
+                <h2>Register</h2>
+                <RegistrationForm onRegistrationSuccess={handleRegistrationSuccess} />
+                {registrationSuccess && <p className="alert alert-success">Registered successfully. Please log in.</p>}
+                </div>
+        
+                <div className="col-md-6">
+                <h2>Login</h2>
+                <LoginForm onLoginSuccess={handleLoginSuccess} />
+                </div>
+            </div>
         </div>
     );
 };

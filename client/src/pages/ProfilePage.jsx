@@ -65,16 +65,18 @@ const ProfilePage = () => {
                 </div>
             ) : (
                 <div>
-                    <input type="text" name="firstName" value={updatedUser.firstName} onChange={handleChange} />
-                    <input type="text" name="lastName" value={updatedUser.lastName} onChange={handleChange} />
-                    <select name="pronouns" value={updatedUser.pronouns} onChange={handleChange}>
-                        <option value="He/Him">He/Him</option>
-                        <option value="She/Her">She/Her</option>
-                        <option value="They/Them">They/Them</option>
-                    </select>
-                    <input type="radio" name="membershipType" value="LGBTQIA+" checked={updatedUser.membershipType === 'LGBTQIA+'} onChange={handleChange} /> LGBTQIA+
-                    <input type="radio" name="membershipType" value="Ally" checked={updatedUser.membershipType === 'Ally'} onChange={handleChange} /> Ally
-                    <button onClick={handleUpdate}>Update</button>
+                    <form className="profileForm" onSubmit={handleUpdate}>
+                        <input type="text" name="firstName" value={updatedUser.firstName} onChange={handleChange} />
+                        <input type="text" name="lastName" value={updatedUser.lastName} onChange={handleChange} />
+                        <select name="pronouns" value={updatedUser.pronouns} onChange={handleChange}>
+                            <option value="He/Him">He/Him</option>
+                            <option value="She/Her">She/Her</option>
+                            <option value="They/Them">They/Them</option>
+                        </select>
+                        <input type="radio" name="membershipType" value="LGBTQIA+" checked={updatedUser.membershipType === 'LGBTQIA+'} onChange={handleChange} /> LGBTQIA+
+                        <input type="radio" name="membershipType" value="Ally" checked={updatedUser.membershipType === 'Ally'} onChange={handleChange} /> Ally
+                        <button onClick={handleUpdate}>Update</button>
+                    </form>
                 </div>
             )}
             <h4>Your Submissions</h4>

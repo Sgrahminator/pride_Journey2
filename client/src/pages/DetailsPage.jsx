@@ -31,7 +31,8 @@ const DetailsPage = () => {
         fetchSubmissionAndUser();
     }, [id]);
 
-    const handleUpdate = async () => {
+    const handleUpdate = async (e) => {
+        e.preventDefault(); // Prevent default form submission
         try {
             await axios.put(`http://localhost:8000/submissions/${id}`, editableFields, { withCredentials: true });
             navigate('/home');
@@ -40,7 +41,8 @@ const DetailsPage = () => {
         }
     };
 
-    const handleDelete = async () => {
+    const handleDelete = async (e) => {
+        e.preventDefault(); // Prevent default form submission
         if (window.confirm('Are you sure you want to delete this submission?')) {
             try {
                 await axios.delete(`http://localhost:8000/submissions/${id}`, { withCredentials: true });
@@ -58,34 +60,35 @@ const DetailsPage = () => {
     const isOwner = currentUser && submission && currentUser._id === submission.user._id;
 
     const renderOwnerView = () => (
-        <div>
-            <input type="text" value={editableFields.name} onChange={handleChange} name="name" />
-            <input type="text" value={editableFields.city} onChange={handleChange} name="city" />
-            <input type="text" value={editableFields.state} onChange={handleChange} name="state" />
-            <textarea value={editableFields.description} onChange={handleChange} name="description" />
-            <button onClick={handleUpdate}>Update</button>
-            <button onClick={handleDelete}>Delete</button>
+        <div className="submission-form">
+            <input className="form-input" type="text" value={editableFields.name} onChange={handleChange} name="name" />
+            <input className="form-input" type="text" value={editableFields.city} onChange={handleChange} name="city" />
+            <input className="form-input" type="text" value={editableFields.state} onChange={handleChange} name="state" />
+            <textarea className="form-input" value={editableFields.description} onChange={handleChange} name="description" />
+            <button className="form-button" onClick={handleUpdate}>Update</button>
+            <button className="form-button" onClick={handleDelete}>Delete</button>
         </div>
     );
 
     const renderVisitorView = () => (
-        <div>
+        <div className="details-card">
             <p>Name: {submission.name}</p>
             <p>City: {submission.city}</p>
             <p>State: {submission.state}</p>
             <p>Description: {submission.description}</p>
-            <button onClick={() => navigate('/home')}>Back Home</button>
+            <button className="details-button" onClick={() => navigate('/home')}>Back Home</button>
         </div>
     );
 
     if (!submission || !currentUser) return <div>Loading...</div>;
 
     return (
-        <div>
-            <h1>Submission Details</h1>
+        <div className="details-page">
+            <h2>Submission Details:</h2>
             {isOwner ? renderOwnerView() : renderVisitorView()}
         </div>
     );
 };
 
 export default DetailsPage;
+

@@ -1,19 +1,25 @@
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types'; 
+import PropTypes from 'prop-types';
+
+const colorClasses = ['pastel-red', 'pastel-orange', 'pastel-yellow', 'pastel-green', 'pastel-blue', 'pastel-indigo', 'pastel-violet'];
 
 const SubmissionList = ({ submissions }) => {
     return (
         <div>
             <h2>All Submissions</h2>
-            <ul>
-                {submissions.map(submission => (
-                    <li key={submission._id}>
-                        <Link to={`/details/${submission._id}`}>
-                            {submission.name}
-                        </Link> - {submission.city}, {submission.state}, submitted by: {submission.user.firstName}
-                    </li>
+            <div className="submission-list-container"> 
+                {submissions.map((submission, index) => (
+                    <div className={`submission-card ${colorClasses[index % colorClasses.length]}`} key={submission._id}> 
+                        <h3>
+                            <Link to={`/details/${submission._id}`}>
+                                {submission.name}
+                            </Link>
+                        </h3>
+                        <p>{submission.city}, {submission.state}</p>
+                        <p>Submitted by: {submission.user.firstName}</p>
+                    </div>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 };
@@ -32,3 +38,5 @@ SubmissionList.propTypes = {
 };
 
 export default SubmissionList;
+
+

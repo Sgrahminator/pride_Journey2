@@ -4,7 +4,7 @@ import NavBar from '../components/NavBar';
 import SubmissionForm from '../components/SubmissionForm';
 import SubmissionList from '../components/SubmissionList';
 
-import '../pages/HomPage.css';
+import '../pages/AllCss.css';
 
 
 const Home = () => {
