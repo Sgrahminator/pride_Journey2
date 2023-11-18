@@ -38,5 +38,3 @@ SubmissionList.propTypes = {
 };
 
 export default SubmissionList;
-
-

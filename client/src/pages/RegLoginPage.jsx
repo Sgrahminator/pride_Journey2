@@ -16,7 +16,7 @@ const RegLoginPage = () => {
     };
 
     return (
-        <div className="container">
+        <div className="container-reglogin">
             <h1 className="text-center my-4">Welcome to Pride Journey</h1>
         
             <div className="row">

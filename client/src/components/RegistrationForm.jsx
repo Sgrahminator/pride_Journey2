@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom'; // Added useNavigate hook
 
 const RegistrationForm = ({ onRegistrationSuccess }) => {
+    const navigate = useNavigate(); // Hook for navigation
     const [user, setUser] = useState({
         firstName: '',
         lastName: '',
@@ -17,6 +19,7 @@ const RegistrationForm = ({ onRegistrationSuccess }) => {
     const validate = () => {
         let newErrors = {...errors}; // Start with existing errors
 
+        // Validation checks
         if (user.firstName.length < 2) {
             newErrors.firstName = 'First name should be at least 2 characters';
         }
@@ -25,7 +28,6 @@ const RegistrationForm = ({ onRegistrationSuccess }) => {
             newErrors.lastName = 'Last name should be at least 2 characters';
         }
 
-        // Only validate email if there's no existing server-side error for email
         if (!newErrors.email && (user.email.length < 9 || !/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(.\w{2,3})+$/.test(user.email))) {
             newErrors.email = 'Enter a valid email address';
         }
@@ -48,7 +50,7 @@ const RegistrationForm = ({ onRegistrationSuccess }) => {
 
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
-    }
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -58,8 +60,7 @@ const RegistrationForm = ({ onRegistrationSuccess }) => {
         try {
             const response = await axios.post('http://localhost:8000/auth/register', user);
             console.log(response.data);
-            onRegistrationSuccess();
-            setUser({
+            setUser({ // Reset user state
                 firstName: '',
                 lastName: '',
                 pronouns: '',
@@ -68,22 +69,22 @@ const RegistrationForm = ({ onRegistrationSuccess }) => {
                 password: '',
                 confirmPassword: ''
             });
+            onRegistrationSuccess(); // Signal successful registration
+            navigate('/'); // Redirect to login page
         } catch (err) {
-            // Set the email error specifically if it exists in the response
-            setErrors({ ...errors, email: err.response?.data?.error || 'Something went wrong' });
+            setErrors({ ...errors, form: err.response?.data?.error || 'Something went wrong' });
         }
     };
 
     const handleChange = (e) => {
         setUser({ ...user, [e.target.name]: e.target.value });
-        // Optionally clear errors for the field being edited
         if (errors[e.target.name]) {
             setErrors({ ...errors, [e.target.name]: '' });
         }
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="reglogin-form" onSubmit={handleSubmit}>
             <div>
                 <label>First Name</label>
                 <input type="text" name="firstName" value={user.firstName} onChange={handleChange} />
@@ -106,7 +107,7 @@ const RegistrationForm = ({ onRegistrationSuccess }) => {
             </div>
             <div>
                 <label>Membership Type</label>
-                <div>
+                <div className="radio-options">
                     <input type="radio" name="membershipType" value="LGBTQIA+" onChange={handleChange} /> LGBTQIA+
                     <input type="radio" name="membershipType" value="Ally" onChange={handleChange} /> Ally
                 </div>
@@ -138,3 +139,4 @@ RegistrationForm.propTypes = {
 };
 
 export default RegistrationForm;
+

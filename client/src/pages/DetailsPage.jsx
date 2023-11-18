@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import './AllCss.css';
 
 const DetailsPage = () => {
     const { id } = useParams();
@@ -65,26 +66,29 @@ const DetailsPage = () => {
             <input className="form-input" type="text" value={editableFields.city} onChange={handleChange} name="city" />
             <input className="form-input" type="text" value={editableFields.state} onChange={handleChange} name="state" />
             <textarea className="form-input" value={editableFields.description} onChange={handleChange} name="description" />
-            <button className="form-button" onClick={handleUpdate}>Update</button>
-            <button className="form-button" onClick={handleDelete}>Delete</button>
+            <div className="button-group">
+                <button className="submission-details-button" onClick={handleUpdate}>Update</button>
+                <button className="submission-details-button" onClick={handleDelete}>Delete</button>
+            </div>
         </div>
     );
+    
 
     const renderVisitorView = () => (
         <div className="details-card">
-            <p>Name: {submission.name}</p>
-            <p>City: {submission.city}</p>
-            <p>State: {submission.state}</p>
-            <p>Description: {submission.description}</p>
-            <button className="details-button" onClick={() => navigate('/home')}>Back Home</button>
+            <p className="profile-data pastel-red">Name: {submission.name}</p>
+            <p className="profile-data pastel-orange">City: {submission.city}</p>
+            <p className="profile-data pastel-green">State: {submission.state}</p>
+            <p className="profile-data pastel-blue">Description: {submission.description}</p>
+            <button className="submission-details-button" onClick={() => navigate('/home')}>Back Home</button>
         </div>
     );
 
     if (!submission || !currentUser) return <div>Loading...</div>;
 
     return (
-        <div className="details-page">
-            <h2>Submission Details:</h2>
+        <div>
+            <h2 className="submission-details-title">Submission Details:</h2>
             {isOwner ? renderOwnerView() : renderVisitorView()}
         </div>
     );

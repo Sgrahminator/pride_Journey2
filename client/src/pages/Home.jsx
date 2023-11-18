@@ -25,15 +25,15 @@ const Home = () => {
 
     return (
         <div>
-            <div className="container my-4">
+            <div className="container-home my-4">
                 <NavBar />
             </div>
     
-            <div className="container my-4">
+            <div className="container-home my-4">
                 <SubmissionForm fetchSubmissions={fetchSubmissions} />
             </div>
 
-            <div className="container my-4">
+            <div className="container-home my-4">
                 <SubmissionList submissions={submissions} />
             </div>
         </div>

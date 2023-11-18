@@ -4,7 +4,7 @@ const AboutPage = () => {
     return (
         <>
             <NavBar />
-            <div className="container mt-4">
+            <div className="container-about mt-4">
                 <h2>Welcome to Pride Journey</h2>
                 <p>
                     About Pride Journey

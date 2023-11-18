@@ -18,7 +18,7 @@ const NavBar = () => {
             <div className="container-fluid">
                 <span className="navbar-brand mb-0 h1">Pride Journey</span>
                 <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav">
+                    <ul className="navbar-nav mr-auto">
                         <li className="nav-item">
                             <NavLink className="nav-link" to="/home">Home</NavLink>
                         </li>
@@ -28,10 +28,8 @@ const NavBar = () => {
                         <li className="nav-item">
                             <NavLink className="nav-link" to="/profile">Profile</NavLink>
                         </li>
-                        <li className="nav-item">
-                            <button className="btn btn-link nav-link" onClick={handleLogout}>Log Out</button>
-                        </li>
                     </ul>
+                    <button className="btn btn-link nav-link" onClick={handleLogout}>Log Out</button>
                 </div>
             </div>
         </nav>
@@ -39,3 +37,4 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
