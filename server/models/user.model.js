@@ -39,6 +39,22 @@ const UserSchema = new mongoose.Schema({
         required: [true, 'Password is required'],
         minlength: [8, 'Password must be at least 8 characters long']
     },
+
+    submissions: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Submission'
+    }],
+    
+    questions: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'QnA'
+    }],
+    
+    supportPosts: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'SupportPost'
+    }]
+
 }, { timestamps: true });
 
 // Password hashing middleware

@@ -1,133 +1,75 @@
-/* Overall Layout */
+/* Base Styles */
 .container {
     padding: 40px;
     margin-top: 20px;
-    background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet); 
     border-radius: 15px;
     box-shadow: 0 5px 15px 0 rgba(0,0,0,0.3);
-    color: lightcyan;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; 
 }
 
-.container-home {
-    background-image: url(/images/hana_tree.jpg);
+.text-lightcyan-shadow {
+    color: lightcyan;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.text-black-white-shadow {
+    color: black;
+    text-shadow: -1px 1px 0 white, -1px 1px 0 white, -1px 1px 0 white, -1px 1px 0 white;
+}
+
+/* Container Variants */
+.container,
+.navbar,
+.submission-card,
+.details-card,
+.submission-details-button,
+.profile-edit-button {
+    background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet); 
+}
+
+.container-home,
+.container-reglogin,
+.container-profile {
     background-size: cover;
     background-position: center;
     color: lightcyan;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
-.container-reglogin{
-    background-image: url(/images/HI_Flower.jpg);
-    background-size: cover;
-    background-position: center;
-    color: lightcyan;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-    
-}
-
-.container-about{
+.container-home { background-image: url(/images/hana_tree.jpg); }
+.container-reglogin { background-image: url(/images/HI_Flower.jpg); }
+.container-profile { background-image: url(/images/bambo.jpg); }
+.container-about {
     background-image: url(/images/sunset.jpg);
-    background-size: cover;
-    background-position: center;
     padding: 10px;
     color: black;
     font-weight: bold;
     text-shadow: -1px 1px 0 white, -1px 1px 0 white, -1px 1px 0 white, -1px 1px 0 white;
 }
 
-.container-profile{
-    background-image: url(/images/bambo.jpg);
-    background-size: cover;
-    background-position: center;
-    color: lightcyan;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-}
-
-.reglogin-form label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-.reglogin-form input[type="radio"] {
-    
-    margin-bottom: 10px;
-}
-
-.reglogin-form .radio-options {
-    margin-bottom: 10px;
-}
-
 /* NavBar Styles */
 .navbar {
-    background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet); 
     border-radius: 5px;
     margin-bottom: 20px;
-    padding: 10px 15px; /* This will help in aligning items */
+    padding: 10px 15px;
     display: flex;
-    justify-content: space-between; /* Align items horizontally */
+    justify-content: space-between;
 }
 
 .navbar a {
     width: 100%;
-    color: navy; 
+    color: navy;
     text-decoration: none;
     padding: 10px 15px;
-    margin: 0 10px; /* Increased spacing */
+    margin: 0 10px;
     transition: color 0.3s;
 }
 
-.navbar-collapse {
-    display: flex!important;
-    flex-basis: auto;
-    justify-content: space-between;
-}
+.navbar a:hover { color: rgb(96, 96, 243); }
+.nav-item { align-self: center; }
+.btn-link { margin-left: auto; }
 
-.navbar a:hover {
-    color: rgb(96, 96, 243); /* Change for hover effect */
-}
-
-.nav-item {
-    align-self: center; /* Align nav items vertically */
-}
-
-.btn-link {
-    align-content: right; /* Align logout button to the right */
-}
-
-
-/* Submission Form Styles */
-.submission-form {
-    background-image: url(/images/sunset2.jpg);
-    background-size: cover;
-    background-position: center;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    margin: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    color: #000000;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-}
-
-.submission-form input, form input, form select {
-    width: 33%;
-    padding: 10px;
-    margin: 8px auto;
-    display: block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-/* Form Styling */
-form {
-    background: rgba(255, 255, 255, 0.1); 
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-
+/* Form Styles */
+.reglogin-form label,
 label {
     display: block;
     margin-bottom: 5px;
@@ -136,93 +78,10 @@ label {
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
+.reglogin-form input[type="radio"],
+.reglogin-form .radio-options { margin-bottom: 10px; }
 
-
-/* Button Styling within any form */
-form button {
-    width: 25%;
-    background: linear-gradient(to bottom, #4CAF50, #1eef28);
-    color: #000000;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-}
-
-form button:hover {
-    background: linear-gradient(to bottom, #4CAF49, #1eef27);
-}
-
-/* Responsive Adjustments */
-@media only screen and (max-width: 768px) {
-    .container {
-        padding: 20px;
-    }
-
-    .row div[class^="col-"] {
-        margin-bottom: 20px;
-    }
-}
-
-/* Submission List Styles - Updated for Card Layout */
-.submission-list-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-}
-
-.submission-card {
-    background: linear-gradient(to right, #ffffff) 0%, #f3bcbc 100%; 
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    margin: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    color: #000000; /* Text color */
-    width: calc(33% - 20px); /* Three cards per row, adjust as needed */
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-}
-
-.submission-card h3 {
-    margin-top: 0;
-}
-
-.submission-card p {
-    margin: 5px 0;
-}
-
-/* Pastel color classes */
-.pastel-red {
-    background: linear-gradient(to bottom, #f99999, #b40d0d);
-}
-
-.pastel-orange {
-    background: linear-gradient(to bottom, #f3c486, #f78d0c);
-}
-
-.pastel-yellow {
-    background: linear-gradient(to bottom,yellow, rgb(179, 179, 5));
-}
-
-.pastel-green {
-    background: linear-gradient(to bottom,#84f26f, #1a8a04);
-}
-
-.pastel-blue {
-    background: linear-gradient(to bottom,#56e7f4, #05808b);
-}
-
-.pastel-indigo {
-    background: linear-gradient(to bottom,#86b2f9, #1a50a7);
-}
-
-.pastel-violet {
-    background: linear-gradient(to bottom, #a597f5, #3b24be);
-}
-
+.submission-form,
 .details-card {
     background-image: url(/images/sunset2.jpg);
     background-size: cover;
@@ -236,6 +95,9 @@ form button:hover {
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
+.submission-form input,
+form input,
+form select,
 .profile-data {
     width: 33%;
     padding: 10px;
@@ -246,36 +108,16 @@ form button:hover {
     box-sizing: border-box;
 }
 
-
-
-.submission-details-button {
-    width: 25%;
-    background: linear-gradient(to bottom, #4CAF50, #1eef28);
-    color: #000000;
-    padding: 14px 20px;
-    margin: 8px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+form {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
 }
 
-.submission-details-button:hover {
-    background: linear-gradient(to bottom, #4CAF49, #1eef27);
-}
-
-.submission-details-title {
-    color:#000000;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-}
-
-textarea {
-    height: 50px;
-    width: 100%;
-}
-
-
+/* Button Styles */
+form button,
+.submission-details-button,
 .profile-edit-button {
     width: 25%;
     background: linear-gradient(to bottom, #4CAF50, #1eef28);
@@ -289,15 +131,51 @@ textarea {
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
+form button:hover,
+.submission-details-button:hover,
 .profile-edit-button:hover {
     background: linear-gradient(to bottom, #4CAF49, #1eef27);
 }
 
-/* Specific Styles for ProfilePage */
-.profile-section p {
-    font-size: 1.5em; /* Larger font size for profile data */
+/* Responsive Adjustments */
+@media only screen and (max-width: 768px) {
+    .container { padding: 20px; }
+    .row div[class^="col-"] { margin-bottom: 20px; }
 }
 
+/* Submission List Styles */
+.submission-list-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.submission-card {
+    background: linear-gradient(to right, #ffffff, #f3bcbc); 
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    color: #000000;
+    width: calc(33% - 20px);
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.submission-card h3 { margin-top: 0; }
+.submission-card p { margin: 5px 0; }
+
+/* Pastel Color Classes */
+.pastel-red { background: linear-gradient(to bottom, #f99999, #b40d0d); }
+.pastel-orange { background: linear-gradient(to bottom, #f3c486, #f78d0c); }
+.pastel-yellow { background: linear-gradient(to bottom, yellow, rgb(179, 179, 5)); }
+.pastel-green { background: linear-gradient(to bottom, #84f26f, #1a8a04); }
+.pastel-blue { background: linear-gradient(to bottom, #56e7f4, #05808b); }
+.pastel-indigo { background: linear-gradient(to bottom, #86b2f9, #1a50a7); }
+.pastel-violet { background: linear-gradient(to bottom, #a597f5, #3b24be); }
+
+/* Profile Page Specific Styles */
+.profile-section p { font-size: 1.5em; }
 .profile-section {
     width: 50%;
     padding: 10px;
@@ -307,3 +185,5 @@ textarea {
     border-radius: 4px;
     box-sizing: border-box;
 }
+
+textarea { height: 50px; width: 100%; }
