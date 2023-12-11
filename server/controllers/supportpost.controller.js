@@ -4,7 +4,7 @@ const SupportPost = require('../models/supportpost.model');
 exports.createSupportPost = async (req, res) => {
     try {
         const { title, content, author, postType } = req.body;
-        const imagePath = req.file ? req.file.path : null; // If there is a file, set imagePath to the path of the file. Otherwise, set it to null.
+        const imagePath = req.file ? req.file.path : null; 
 
         const newSupportPost = new SupportPost({
             title,
