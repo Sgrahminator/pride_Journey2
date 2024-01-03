@@ -6,6 +6,7 @@ import AllyCorner from './pages/AllyCorner';
 import ProfilePage from './pages/ProfilePage';
 import RegLoginPage from './pages/RegLoginPage';
 import DetailsPage from './pages/DetailsPage';
+import Footer from './components/Footer';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -22,6 +23,7 @@ const App = () => {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/details/:id" element={<DetailsPage />} />
       </Routes>
+      <Footer />
     </Router>
   );
 };
